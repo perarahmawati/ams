@@ -14,7 +14,7 @@ class UserController extends Controller
         $users = User::select("*")
                     ->whereNotNull('last_seen')
                     ->orderBy('last_seen', 'DESC')
-                    ->paginate(10);
+                    ->get();
           
         return view('user_logs.index', compact('users'));
     }

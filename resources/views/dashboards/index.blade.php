@@ -147,9 +147,10 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @php $no = 1; @endphp
                   @foreach ($items as $item)
                     <tr>
-                      <td>{{ ++$i }}</td>
+                      <td>{{ $no++ }}</td>
                       <td>{{ $item->itemName->name }}</td>
                       <td>{{ $item->manufacturerName->name }}</td>
                       <td>{{ $item->serial_number }}</td>
@@ -160,10 +161,6 @@
                   @endforeach
                 </tbody>
               </table>
-
-              <div class="row text-center">
-                {!! $items->links() !!}
-              </div>
 
             </div>
             <!-- /.table-responsive -->

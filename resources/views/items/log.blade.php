@@ -41,18 +41,18 @@
                                     @if ($log->event == 'updated')
                                     <ul class="list-group">
                                         <li class="list-group-item bg-secondary text-white">Old Data</li>
-                                        <li class="list-group-item"><strong>Item:</strong> {{ $log['properties']['old']['item'] }}</li>
-                                        <li class="list-group-item"><strong>Manufacturer:</strong> {{ $log['properties']['old']['manufacturer'] }}</li>
+                                        <li class="list-group-item"><strong>Item:</strong> {{ $log['properties']['old']['itemName_id'] }}</li>
+                                        <li class="list-group-item"><strong>Manufacturer:</strong> {{ $log['properties']['old']['manufacturerName_id'] }}</li>
                                         <li class="list-group-item"><strong>Serial Number:</strong> {{ $log['properties']['old']['serial_number'] }}</li>
-                                        <li class="list-group-item"><strong>Configuration Status:</strong> {{ $log['properties']['old']['configuration_status'] }}</li>
+                                        <li class="list-group-item"><strong>Configuration Status:</strong> {{ $log['properties']['old']['configurationStatusName_id'] }}</li>
                                         <li class="list-group-item"><strong>Location:</strong> {{ $log['properties']['old']['location'] }}</li>
                                         <li class="list-group-item"><strong>Description:</strong> {{ $log['properties']['old']['description'] }}</li>
                                         <li class="list-group-item"><strong>Created Date:</strong> {{ $log['properties']['old']['created_at'] }}</li>
                                         <li class="list-group-item bg-secondary text-white">New Data</li>
-                                        <li class="list-group-item"><strong>Item:</strong> {{ $log['properties']['attributes']['item'] }}</li>
-                                        <li class="list-group-item"><strong>Manufacturer:</strong> {{ $log['properties']['attributes']['manufacturer'] }}</li>
+                                        <li class="list-group-item"><strong>Item:</strong> {{ $log['properties']['attributes']['itemName_id'] }}</li>
+                                        <li class="list-group-item"><strong>Manufacturer:</strong> {{ $log['properties']['attributes']['manufacturerName_id'] }}</li>
                                         <li class="list-group-item"><strong>Serial Number:</strong> {{ $log['properties']['attributes']['serial_number'] }}</li>
-                                        <li class="list-group-item"><strong>Configuration Status:</strong> {{ $log['properties']['attributes']['configuration_status'] }}</li>
+                                        <li class="list-group-item"><strong>Configuration Status:</strong> {{ $log['properties']['attributes']['configurationStatusName_id'] }}</li>
                                         <li class="list-group-item"><strong>Location:</strong> {{ $log['properties']['attributes']['location'] }}</li>
                                         <li class="list-group-item"><strong>Description:</strong> {{ $log['properties']['attributes']['description'] }}</li>
                                         <li class="list-group-item"><strong>Created Date:</strong> {{ $log['properties']['attributes']['updated_at'] }}</li>
@@ -60,10 +60,10 @@
                                     @elseif ($log->event == 'created')
                                     <ul class="list-group">
                                         <li class="list-group-item bg-secondary text-white">Data Created</li>
-                                        <li class="list-group-item"><strong>Item:</strong> {{ $log['properties']['attributes']['item'] }}</li>
-                                        <li class="list-group-item"><strong>Manufacturer:</strong> {{ $log['properties']['attributes']['manufacturer'] }}</li>
+                                        <li class="list-group-item"><strong>Item:</strong> {{ $log['properties']['attributes']['itemName_id'] }}</li>
+                                        <li class="list-group-item"><strong>Manufacturer:</strong> {{ $log['properties']['attributes']['manufacturerName_id'] }}</li>
                                         <li class="list-group-item"><strong>Serial Number:</strong> {{ $log['properties']['attributes']['serial_number'] }}</li>
-                                        <li class="list-group-item"><strong>Configuration Status:</strong> {{ $log['properties']['attributes']['configuration_status'] }}</li>
+                                        <li class="list-group-item"><strong>Configuration Status:</strong> {{ $log['properties']['attributes']['configurationStatusName_id'] }}</li>
                                         <li class="list-group-item"><strong>Location:</strong> {{ $log['properties']['attributes']['location'] }}</li>
                                         <li class="list-group-item"><strong>Description:</strong> {{ $log['properties']['attributes']['description'] }}</li>
                                         <li class="list-group-item"><strong>Created Date:</strong> {{ $log['properties']['attributes']['created_at'] }}</li>

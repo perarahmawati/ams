@@ -19,10 +19,9 @@ class DashboardController extends Controller
         $configured = Item::where('configurationStatusName_id', '3')->count();
         $tested = Item::where('configurationStatusName_id', '4')->count();
         $installed = Item::where('configurationStatusName_id', '5')->count();
-        $items = Item::latest()->simplePaginate(5);
+        $items = Item::latest()->paginate(10);
 
-        return view('dashboards.index', compact('allitems', 'unconfigured', 'preconfigured', 'configured', 'tested', 'installed', 'items'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);;
+        return view('dashboards.index', compact('allitems', 'unconfigured', 'preconfigured', 'configured', 'tested', 'installed', 'items'));
     } 
 
 }

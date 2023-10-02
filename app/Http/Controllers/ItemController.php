@@ -20,7 +20,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::Paginate(5);
+        $items = Item::all();
       
         return view('items.index',compact('items'));
     }
@@ -41,6 +41,10 @@ class ItemController extends Controller
      */
     public function importexcel(Request $request)
     {
+        $this->validate($request,[
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+        
         $data = $request->file('file');
 
         $dataname = $data->getClientOriginalName();
@@ -116,9 +120,8 @@ class ItemController extends Controller
 
     public function trash()
     {
-        $item = Item::onlyTrashed()->paginate(2);
-        return view('items.trash', ['item' => $item])
-            ->with('i', (request()->input('page', 1) - 1) * 2);
+        $item = Item::onlyTrashed()->get();
+        return view('items.trash', ['item' => $item]);
     }
 
     public function restore($id)

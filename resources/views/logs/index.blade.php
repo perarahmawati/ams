@@ -35,22 +35,23 @@
 
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-hover">
+                <table id="myTable" class="table table-bordered table-hover ">
                   <thead>
                   <tr>
                         <th>No</th>
                         <th>User</th>
                         <th>Event</th>
-                        <th>Subject ID</th>
+                        <th>Item ID</th>
                         <th>Causer Type</th>
-                        <th>Created</th>
+                        <th>Action Date</th>
                         <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
+                    @php $no = 1; @endphp
                     @foreach ($logactivities as $log)
                     <tr>
-                        <td>{{ ++$i }}</td>
+                        <td>{{ $no++ }}</td>
                         <td>{{ $log->users->name }}</td>             
                         <td>{{ $log->event }}</td>
                         <td>{{ $log->subject_id }}</td>
@@ -70,9 +71,7 @@
                     @endforeach
                   </tbody>
                 </table>
-                <div class="row text-center">
-                    {!! $logactivities->links() !!}
-                </div>
+
               </div>
               <!-- /.card-body -->
             </div>
@@ -129,22 +128,10 @@
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="{{ asset('adminLTE/dist/js/demo.js') }}"></script> --}}
 
-<!-- Page specific script -->
+<!-- AdminLTE DataTable -->
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+  $(document).ready( function() {
+    $('#myTable').DataTable();
   });
 </script>
 
