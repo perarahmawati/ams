@@ -76,6 +76,7 @@
 
                     <a class="btn btn-dark" href="{{ route('items.trash') }}">Recycle Bin</a>
                     <a class="btn btn-dark float-right" leftover href="{{ route('item-names.index') }}">Edit Table</a>
+                    <a class="btn btn-dark float-right" leftover href="{{ route('item-names.index') }}">Edit Table</a>
                   
                     @if ($message = Session::get('success'))
                       <div class="alert alert-success">
@@ -120,11 +121,11 @@
         
                                 {{-- <a class="btn btn-info" href="{{ route('items.show',$item->id) }}">Show</a> --}}
                   
-                                <a class="btn btn-block btn-outline-dark btn-sm" href="{{ route('items.edit',$item->id) }}">Edit</a>
+                                <a class="btn btn-outline-dark btn-sm" href="{{ route('items.edit',$item->id) }}"><i class="fas fa-pen"></i></a>
               
-                                <button type="submit" class="btn btn-block btn-outline-dark btn-sm">Delete</button>
+                                <button type="submit" class="btn btn-outline-dark btn-sm"><i class="fas fa-trash"></i></button>
 
-                                <a class="btn btn-block btn-outline-dark btn-sm" href="{{ route('items.log',$item->id) }}">Log</a>
+                                <a class="btn btn-outline-dark btn-sm" href="{{ route('items.log',$item->id) }}"><i class="fas fa-history"></i></a>
                               </form>
                             </td>
                           </tr>
