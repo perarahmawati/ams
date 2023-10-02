@@ -36,21 +36,22 @@
               
               <div class="card-body">
                 @php $users = DB::table('users')->get(); @endphp
-                <table id="example1" class="table table-bordered table-hover">
+                <table id="myTable" class="table table-bordered table-hover ">
                   <thead>
                   <tr>
                         <th>No</th>
-                        <th>Name</th>
+                        <th>User Name</th>
                         <th>Email</th>
                         <th>Last Seen</th>
                         <th>Status</th>                  
                     </tr>
                   </thead>
                   <tbody>
+                    @php $no = 1; @endphp
                     @if($users->isNotEmpty())
                     @foreach($users as $user)
                         <tr>
-                            <td>{{ $user->id }}</td>
+                            <td>{{ $no++ }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
@@ -68,6 +69,7 @@
                     @endif
                   </tbody>
                 </table>
+
               </div>
             </div>
           </div>
@@ -110,22 +112,13 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('adminLTE/dist/js/adminlte.min.js') }}"></script>
 
-<!-- Page specific script -->
+<!-- AdminLTE DataTable -->
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+  $(document).ready( function() {
+    $('#myTable').DataTable();
   });
 </script>
+
+</body>
+</html>
 

@@ -20,6 +20,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
+    <!-- CHECKBOX -->
+    <link rel="stylesheet" href="{{ asset('adminLTE/plugins/jquery-datatables-checkboxes/css/dataTables.checkboxes.css') }}">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminLTE/dist/css/adminlte.min.css') }}">
 </head>

@@ -75,7 +75,7 @@
                     </div>
 
                     <a class="btn btn-dark" href="{{ route('items.trash') }}">Recycle Bin</a>
-                    <a class="btn btn-dark" leftover href="{{ route('item-names.index') }}">Edit Table</a>
+                    <a class="btn btn-dark float-right" leftover href="{{ route('item-names.index') }}">Edit Table</a>
                   
                     @if ($message = Session::get('success'))
                       <div class="alert alert-success">
@@ -83,11 +83,10 @@
                       </div>
                     @endif
 
-                    <table id="example1" class="table table-bordered table-hover">
+                    <table id="myTable" class="table table-bordered table-hover">
                       <thead>
                         <tr>
-                          <th>No</th>
-                          <th>Item ID</th>
+                          <th></th>
                           <th>Item</th>
                           <th>Manufacturer</th>
                           <th>Serial Number</th>
@@ -99,9 +98,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($items as $key => $item)
+                        @foreach ($items as $item)
                           <tr>
-                            <td>{{ $items->firstItem() + $key }}</td>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->itemName->name }}</td>
                             <td>{{ $item->manufacturerName->name }}</td>
@@ -117,31 +115,17 @@
         
                                 {{-- <a class="btn btn-info" href="{{ route('items.show',$item->id) }}">Show</a> --}}
                   
-                                <a class="btn btn-block btn-outline-dark btn-sm" href="{{ route('items.edit',$item->id) }}">Edit</a>
+                                <a class="btn btn-outline-dark btn-sm" href="{{ route('items.edit',$item->id) }}"><i class="fas fa-pen"></i></a>
               
-                                <button type="submit" class="btn btn-block btn-outline-dark btn-sm">Delete</button>
+                                <button type="submit" class="btn btn-outline-dark btn-sm"><i class="fas fa-trash"></i></button>
 
-                                <a class="btn btn-block btn-outline-dark btn-sm" href="{{ route('items.log',$item->id) }}">Log</a>
+                                <a class="btn btn-outline-dark btn-sm" href="{{ route('items.log',$item->id) }}"><i class="fas fa-history"></i></a>
                               </form>
                             </td>
                           </tr>
                         @endforeach
                       </tbody>
                     </table>
-
-                    <div class="float-left">
-                      Showing
-                      {{ $items->firstItem() }}
-                      to
-                      {{ $items->lastItem() }}
-                      of
-                      {{ $items->total() }}
-                      entries
-                    </div>
-                    
-                    <div class="float-right">
-                        {!! $items->links() !!}
-                    </div>
 
                   </div>
                 </div>
@@ -200,6 +184,7 @@
 <script src="{{ asset('adminLTE/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('adminLTE/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('adminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('adminLTE/plugins/jquery-datatables-checkboxes/js/dataTables.checkboxes.min.js') }}"></script>
 
 <!-- AdminLTE App -->
 <script src="{{ asset('adminLTE/dist/js/adminlte.min.js') }}"></script>
@@ -207,7 +192,45 @@
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="{{ asset('adminLTE/dist/js/demo.js') }}"></script> --}}
 
-</script><!--"colvis" -->
-</body>
-</html>
+<!-- AdminLTE DataTable -->
+<script>
+  $(document).ready( function() {
+    $('#myTable').DataTable({
+      dom: '<"html5buttons"B>lTfgitp',
+      buttons: [
+        {extend: 'copy'},
+        {extend: 'csv', title:'Data Asset Management System'},
+        {extend: 'excel', title:'Data Asset Management System'},
+        {extend: 'pdf', title:'Data Asset Management System'},
+
+        {extend: 'print',
+        customize: function (win){
+          $(win.document.body).addClass('white-bg');
+          $(win.document.body).css('font-size', '10px');
+
+          $(win.document.body).find('table')
+          .addClass('compact')
+          .css('font-soze', 'inherit');
+        }
+        }
+      ],
+      lengthMenu: [
+        [10, 25, 50, 100, -1],
+        [10, 25, 50, 100, 'All']
+      ],
+      columnDefs: [
+        {
+          targets: 0,
+          checkboxes: {
+            selectRow: true
+          }
+        }
+      ],
+      select: {
+        style: 'multi'
+      },
+      order: [[1, 'asc']]
+    });
+  });
+</script>
  

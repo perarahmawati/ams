@@ -1,0 +1,11 @@
+item_name,manufacturer_name,serial_number,configuration_status,location,description
+2,1,7263827162,1,Bandung,NPB
+3,2,7261538271,3,Cimahi,Server
+2,3,9281736251,2,Jakarta,NPB
+5,1,2514735261,4,Aceh,Storage
+6,2,6251382715,5,Batam,Expansion Storage
+3,3,5142837261,2,Bandung,Server
+4,1,6251837251,3,Tangerang,Switch
+5,2,6251428251,1,Bogor,Storage
+4,3,6251826142,5,Depok,Switch
+9,1,6251625142,5,Tangerang,Material Installation

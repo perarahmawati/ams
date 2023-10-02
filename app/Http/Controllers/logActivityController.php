@@ -14,12 +14,10 @@ class logActivityController extends Controller
     public function index(Request $request)
     {
         $users = User::latest()->get();
-        $items = Item::onlyTrashed()->paginate(10);
-        // $logactivities = LogActivity::oldest()->simplePaginate(5);
-        $logactivities = LogActivity::with('users')->orderBy('id', 'DESC')->simplePaginate(5);
+        $items = Item::onlyTrashed()->get();
+        $logactivities = LogActivity::with('users')->orderBy('id', 'DESC')->get();
 
-            return view('logs.index',compact('logactivities', 'users', 'items'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
+            return view('logs.index',compact('logactivities', 'users', 'items'));
     }
 
     /**

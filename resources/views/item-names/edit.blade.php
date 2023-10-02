@@ -122,6 +122,52 @@
 
     </form> --}}
 
+    {{-- <form action="{{ route('item-names.update',$configuredStatusName->id) }}" method="POST">
+      @csrf
+      @method('PUT')
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+
+              <!-- Card -->
+              <div class="card card-secondary">
+                <div class="card-header">
+                  <h3 class="card-title">Edit Configured Status</h3>
+                </div>
+
+                <!-- Card Body -->
+                <div class="card-body">
+
+                  <div class="form-group">
+                      <label>Item Option</label>
+                      <input type="text" name="name" value="{{ $configuredStatusName->name }}" class="form-control">
+                  </div>
+                  
+                  <!-- Button Cancel & Save -->
+                  <div class="row">
+                    <div class="col-12">
+                      <a href="{{ route('item-names.index') }}" class="btn btn-outline-dark">Cancel</a>
+                      <input type="submit" value="Save" class="btn btn-outline-dark">
+                    </div>
+                  </div>
+                  <!-- /.Button Cancel & Save -->
+
+                </div>
+                <!-- /.card-body -->
+
+              </div>
+              <!-- /.card -->
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /.Main content -->
+
+    </form> --}}
 
   </div>
   <!-- /.Content Wrapper. Contains page content -->

@@ -37,25 +37,26 @@
 
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-hover">
+                <table id="myTable" class="table table-bordered table-hover ">
                   <thead>
                   <tr>
                         <th>No</th>
+                        <th>Item ID</th>
                         <th>Item</th>
-                        <th>Id</th>
                         <th>Manufacturer</th>
                         <th>Serial Number</th>
                         <th>Configuration Status</th>
                         <th>Location</th>
                         <th>Description</th>
-                        <th>Created Date</th>
+                        <th>Deleted Date</th>
                         <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
+                    @php $no = 1; @endphp
                     @foreach ($item as $item)
                     <tr>
-                        <td>{{ ++$i }}</td>
+                        <td>{{ $no++ }}</td>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->itemName->name }}</td>
                         <td>{{ $item->manufacturerName->name }}</td>
@@ -63,7 +64,7 @@
                         <td>{{ $item->configurationStatusName->name }}</td>
                         <td>{{ $item->location }}</td>
                         <td>{{ $item->description }}</td>
-                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->deleted_at }}</td>
                         <td>
                             <form action="{{ route('items.restore',$item->id) }}" method="POST">            
                                 @csrf
@@ -76,9 +77,6 @@
                     @endforeach
                   </tbody>
                 </table>
-                <div class="row text-center">
-                    {{-- {!! $item->links() !!} --}}
-                </div>
               </div>
               <!-- /.card-body -->
             </div>
@@ -137,24 +135,13 @@
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="{{ asset('adminLTE/dist/js/demo.js') }}"></script> --}}
 
-<!-- Page specific script -->
+<!-- AdminLTE DataTable -->
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+  $(document).ready( function() {
+    $('#myTable').DataTable();
   });
 </script>
+
 </body>
 </html>
  
